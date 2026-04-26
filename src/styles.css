@@ -58,8 +58,8 @@
   --gradient-fire: linear-gradient(135deg, oklch(0.6 0.22 27), oklch(0.78 0.16 65));
   --gradient-overlay: linear-gradient(
     180deg,
-    oklch(0.16 0.012 60 / 0.2) 0%,
-    oklch(0.16 0.012 60 / 0.95) 100%
+    oklch(0.16 0.012 60 / 0.1) 0%,
+    oklch(0.16 0.012 60 / 0.7) 100%
   );
   --shadow-glow: 0 10px 40px -10px oklch(0.6 0.22 27 / 0.5);
   --shadow-card: 0 8px 24px -8px oklch(0 0 0 / 0.5);

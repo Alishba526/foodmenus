@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { ArrowLeft, Minus, Plus, Flame } from "lucide-react";
+import { ArrowLeft, Minus, Plus, Flame, ShoppingCart } from "lucide-react";
 import { findProduct, relatedProducts, type ProductView } from "@/lib/products";
-import { img, imgSrcSet, BRAND } from "@/data/menu";
-import { cart } from "@/store/cart";
+import { img, BRAND } from "@/data/menu";
+import { cart, useCart } from "@/store/cart";
 import { toast } from "@/lib/swal";
 import { Footer } from "@/components/Footer";
+import { CartDrawer } from "@/components/CartDrawer";
 
 export default function ProductDetail() {
   const { itemId } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState<ProductView | null>(null);
   const [qty, setQty] = useState(1);
+  const [cartOpen, setCartOpen] = useState(false);
+  const cartItems = useCart();
+  const cartCount = cartItems.reduce((s, l) => s + l.qty, 0);
 
   useEffect(() => {
     if (itemId) {
@@ -70,21 +74,41 @@ export default function ProductDetail() {
     <div className="min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-40 border-b border-border bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <button
-            onClick={() => navigate(-1)}
-            className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary"
-          >
-            <ArrowLeft className="h-4 w-4" /> Back
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary"
+            >
+              <ArrowLeft className="h-4 w-4" /> <span className="hidden sm:inline">Back</span>
+            </button>
+            <Link
+              to="/"
+              className="hidden items-center gap-2 font-display text-base font-bold tracking-wide text-foreground md:flex"
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-fire shadow-glow">
+                🌶️
+              </span>
+              SPICY <span className="text-primary">FOODS</span>
+            </Link>
+          </div>
+
           <Link
             to="/"
-            className="flex items-center gap-2 font-display text-base font-bold tracking-wide text-foreground"
+            className="flex items-center gap-2 font-display text-base font-bold tracking-wide text-foreground md:hidden"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-fire shadow-glow">
-              🌶️
-            </span>
             SPICY <span className="text-primary">FOODS</span>
           </Link>
+
+          <button
+            onClick={() => setCartOpen(true)}
+            className="relative flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground transition hover:border-primary"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            <span className="hidden sm:inline">Cart</span>
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-gradient-fire px-1.5 text-xs font-bold text-primary-foreground">
+              {cartCount}
+            </span>
+          </button>
         </div>
       </header>
 
@@ -202,6 +226,7 @@ export default function ProductDetail() {
         )}
       </main>
 
+      <CartDrawer open={cartOpen} onClose={() => setCartOpen(false)} />
       <Footer />
     </div>
   );
