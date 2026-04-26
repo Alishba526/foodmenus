@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HERO_SLIDES, BRAND, img, imgSrcSet } from "@/data/menu";
+import { HERO_SLIDES, BRAND, img } from "@/data/menu";
 import { Instagram, Facebook } from "lucide-react";
 
 // Tiktok inline icon (lucide doesn't ship one consistently)
@@ -30,14 +30,8 @@ export function Hero() {
         >
           <img
             src={img(slide.image, 1600)}
-            srcSet={imgSrcSet(slide.image)}
-            sizes="100vw"
             alt=""
-            // First slide loads eagerly + high priority for fast LCP
             loading={idx === 0 ? "eager" : "lazy"}
-            // @ts-expect-error fetchpriority is valid HTML, not yet typed in React
-            fetchpriority={idx === 0 ? "high" : "low"}
-            decoding={idx === 0 ? "sync" : "async"}
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0" style={{ background: "var(--gradient-overlay)" }} />

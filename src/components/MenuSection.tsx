@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import type { MenuSection as MS, MenuItem } from "@/data/menu";
 import { img, imgSrcSet } from "@/data/menu";
 import { cart } from "@/store/cart";
@@ -32,16 +32,12 @@ export function MenuSection({ section }: { section: MS }) {
           {section.items.map((item) => (
             <Link
               key={item.id}
-              to="/menu/$itemId"
-              params={{ itemId: item.id }}
-              preload="intent"
+              to={`/menu/${item.id}`}
               className="group block overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                 <img
                   src={img(item.image, 800)}
-                  srcSet={imgSrcSet(item.image)}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   alt={item.name}
                   loading="lazy"
                   decoding="async"

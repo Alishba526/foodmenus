@@ -1,7 +1,7 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { deals } from "@/data/menu";
 import type { Deal } from "@/data/menu";
-import { img, imgSrcSet } from "@/data/menu";
+import { img } from "@/data/menu";
 import { cart } from "@/store/cart";
 import { toast } from "@/lib/swal";
 import { Plus } from "lucide-react";
@@ -30,16 +30,12 @@ export function DealsSection() {
           {deals.map((d) => (
             <Link
               key={d.id}
-              to="/menu/$itemId"
-              params={{ itemId: d.id }}
-              preload="intent"
+              to={`/menu/${d.id}`}
               className="block overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <div className="relative aspect-video bg-muted">
                 <img
                   src={img(d.image, 800)}
-                  srcSet={imgSrcSet(d.image)}
-                  sizes="(max-width: 768px) 100vw, 33vw"
                   alt={d.name}
                   loading="lazy"
                   decoding="async"
