@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import type { MenuSection as MS, MenuItem } from "@/data/menu";
-import { img, imgSrcSet } from "@/data/menu";
+import { img } from "@/data/menu";
 import { cart } from "@/store/cart";
 import { toast } from "@/lib/swal";
 import { Plus } from "lucide-react";
@@ -14,43 +14,42 @@ export function MenuSection({ section }: { section: MS }) {
   };
 
   return (
-    <section id={section.id} className="scroll-mt-24 px-4 py-12 md:py-16">
+    <section id={section.id} className="px-4 py-6">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-8 flex items-end gap-4">
-          <div className="h-px w-10 bg-primary" />
-          <div>
-            <h2 className="font-display text-3xl font-bold uppercase tracking-wider text-foreground md:text-4xl">
-              {section.title}
-            </h2>
-            {section.subtitle && (
-              <p className="mt-1 text-sm text-muted-foreground">{section.subtitle}</p>
-            )}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <h2 className="mb-4 font-display text-2xl font-bold uppercase tracking-wider text-amber-500">
+          {section.title}
+        </h2>
+        {/* Mobile: grid-cols-2, Desktop: md:grid-cols-4 */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {section.items.map((item) => (
             <Link
               key={item.id}
               to={`/menu/${item.id}`}
-              className="group block overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-primary"
+              className="group block overflow-hidden rounded-2xl border-l-4 border-amber-500 bg-[#1e1e1e] shadow-[0_4px_12px_rgba(0,0,0,0.5)] transition-all hover:bg-[#252525] active:scale-[0.98]"
             >
-              <div className="relative aspect-square overflow-hidden bg-muted">
+              <div className="aspect-square overflow-hidden bg-[#161616]">
                 <img
                   src={img(item.image, 400)}
                   alt={item.name}
                   loading="lazy"
                   decoding="async"
-                  width={400}
-                  height={400}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-3">
-                <h3 className="truncate font-display text-sm font-semibold text-foreground">
+                <h3 className="truncate font-display text-sm font-semibold text-white">
                   {item.name}
                 </h3>
-                <p className="text-xs font-medium text-primary">RS {item.price}</p>
+                <div className="mt-1 flex items-center justify-between">
+                  <p className="text-sm font-bold text-amber-500">RS {item.price}</p>
+                  <button
+                    type="button"
+                    onClick={(e) => quickAdd(e, item)}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500 text-black transition-transform active:scale-90"
+                  >
+                    <Plus size={16} />
+                  </button>
+                </div>
               </div>
             </Link>
           ))}

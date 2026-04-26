@@ -15,56 +15,41 @@ export function DealsSection() {
   };
 
   return (
-    <section id="deals" className="scroll-mt-24 px-4 py-12 md:py-16">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-8 flex items-end gap-4">
-          <div className="h-px w-10 bg-primary" />
-          <div>
-            <h2 className="font-display text-3xl font-bold uppercase tracking-wider text-foreground md:text-4xl">
-              Value Deals
-            </h2>
-            <p className="mt-1 text-sm text-muted-foreground">Family combos from RS 700</p>
-          </div>
+    <section id="deals" className="px-4 py-8 bg-black/50">
+      <div className="mx-auto max-w-4xl">
+        <div className="mb-6 flex items-center gap-3">
+          <div className="h-8 w-1.5 bg-amber-500 rounded-full" />
+          <h2 className="font-display text-3xl font-bold uppercase tracking-wider text-white">
+            Exclusive <span className="text-amber-500">Deals</span>
+          </h2>
         </div>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {deals.map((d) => (
             <Link
               key={d.id}
               to={`/menu/${d.id}`}
-              className="block overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-primary"
+              className="group relative flex overflow-hidden rounded-3xl border-l-4 border-amber-500 border border-white/5 bg-[#1e1e1e] p-4 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.15)] hover:border-amber-400 hover:bg-[#252525] hover:shadow-[0_0_30px_rgba(245,158,11,0.25)]"
             >
-              <div className="relative aspect-video bg-muted">
-                <img
-                  src={img(d.image, 800)}
-                  alt={d.name}
-                  loading="lazy"
-                  decoding="async"
-                  className="h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-card via-card/40 to-transparent" />
-                <div className="absolute inset-x-4 bottom-3 flex items-end justify-between">
-                  <h3 className="font-display text-2xl font-bold text-foreground">{d.name}</h3>
-                  <span className="rounded-full bg-gradient-fire px-3 py-1 text-sm font-bold text-primary-foreground shadow-glow">
-                    RS {d.price.toLocaleString()}
-                  </span>
-                </div>
+              <div className="h-24 w-24 shrink-0 overflow-hidden rounded-2xl border border-white/10">
+                <img src={img(d.image, 300)} alt={d.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
               </div>
-              <div className="p-5">
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {d.items.map((it, i) => (
-                    <li key={i} className="flex items-center gap-2">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  type="button"
-                  onClick={(e) => quickAdd(e, d)}
-                  className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-fire py-3 text-sm font-bold uppercase tracking-wide text-primary-foreground shadow-glow transition hover:opacity-90 active:scale-[0.98]"
-                >
-                  <Plus className="h-4 w-4" /> Add Deal
-                </button>
+              <div className="ml-4 flex flex-1 flex-col justify-between">
+                <div>
+                  <h3 className="font-display text-lg font-bold text-white">{d.name}</h3>
+                  <p className="text-[11px] text-amber-500/90 mt-1 uppercase tracking-wider font-bold">
+                    {d.items.join(" + ")}
+                  </p>
+                </div>
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="text-sm font-bold text-white">RS {d.price}</span>
+                  <button
+                    onClick={(e) => quickAdd(e, d)}
+                    className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-500 text-black transition-transform active:scale-90 shadow-lg shadow-amber-500/30"
+                  >
+                    <Plus size={16} />
+                  </button>
+                </div>
               </div>
             </Link>
           ))}
