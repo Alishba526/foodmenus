@@ -28,45 +28,29 @@ export function MenuSection({ section }: { section: MS }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {section.items.map((item) => (
             <Link
               key={item.id}
               to={`/menu/${item.id}`}
               className="group block overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-primary"
             >
-              <div className="relative aspect-4/3 overflow-hidden bg-muted">
+              <div className="relative aspect-square overflow-hidden bg-muted">
                 <img
-                  src={img(item.image, 800)}
+                  src={img(item.image, 400)}
                   alt={item.name}
                   loading="lazy"
                   decoding="async"
-                  width={800}
-                  height={600}
+                  width={400}
+                  height={400}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                 />
-                {item.badge && (
-                  <span className="absolute left-3 top-3 rounded-full bg-gradient-fire px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground shadow-glow">
-                    {item.badge}
-                  </span>
-                )}
-                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card to-transparent" />
               </div>
-              <div className="flex items-center justify-between gap-3 p-4">
-                <div className="min-w-0">
-                  <h3 className="truncate font-display text-lg font-semibold text-foreground">
-                    {item.name}
-                  </h3>
-                  <p className="text-sm font-medium text-primary">RS {item.price}+</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={(e) => quickAdd(e, item)}
-                  aria-label={`Add ${item.name} to cart`}
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-fire text-primary-foreground shadow-glow transition hover:scale-110 active:scale-95"
-                >
-                  <Plus className="h-5 w-5" />
-                </button>
+              <div className="p-3">
+                <h3 className="truncate font-display text-sm font-semibold text-foreground">
+                  {item.name}
+                </h3>
+                <p className="text-xs font-medium text-primary">RS {item.price}</p>
               </div>
             </Link>
           ))}
