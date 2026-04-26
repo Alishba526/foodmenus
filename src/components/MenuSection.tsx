@@ -35,7 +35,7 @@ export function MenuSection({ section }: { section: MS }) {
               to={`/menu/${item.id}`}
               className="group block overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow focus:outline-none focus:ring-2 focus:ring-primary"
             >
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+              <div className="relative aspect-4/3 overflow-hidden bg-muted">
                 <img
                   src={img(item.image, 800)}
                   alt={item.name}

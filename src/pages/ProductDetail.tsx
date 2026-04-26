@@ -102,7 +102,7 @@ export default function ProductDetail() {
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Image */}
           <div className="overflow-hidden rounded-3xl border border-border bg-muted shadow-card">
-            <div className="relative aspect-[4/3] w-full">
+            <div className="relative aspect-4/3 w-full">
               <img
                 src={img(product.image, 1200)}
                 alt={product.name}
@@ -188,7 +188,7 @@ export default function ProductDetail() {
                   to={`/menu/${p.id}`}
                   className="group overflow-hidden rounded-2xl border border-border bg-card shadow-card transition hover:-translate-y-1 hover:border-primary/60"
                 >
-                  <div className="aspect-[4/3] overflow-hidden bg-muted">
+                  <div className="aspect-4/3 overflow-hidden bg-muted">
                     <img src={img(p.image, 600)} alt={p.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-110" />
                   </div>
                   <div className="p-3">
