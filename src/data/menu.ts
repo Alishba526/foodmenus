@@ -24,45 +24,43 @@ export const menu: MenuSection[] = [
   {
     id: "pizza",
     title: "Pizza",
-    subtitle: "Fiery flavours",
+    subtitle: "Freshly Baked",
     items: [
-      { id: "pz1", name: "Spicy Tikka Pizza", price: 750, image: "/images/spicy-foods-pizza.jpg", badge: "Hot", description: "Hand-stretched dough topped with marinated chicken tikka.", tags: ["Spicy", "Chicken"] },
-      { id: "pz2", name: "BBQ Inferno Pizza", price: 450, image: "/images/BBQ Fajita Pizza.jpg", description: "Smoky BBQ sauce base, grilled chicken.", tags: ["BBQ", "Smoky"] },
-      { id: "pz3", name: "Fajita Fire Pizza", price: 300, image: "/images/loaded-special-pizza.jpg", description: "Mexican-style fajita chicken, bell peppers.", tags: ["Fajita", "Spicy"] },
-      { id: "pz4", name: "Pepperoni Flame", price: 600, image: "/images/Pepperoni Flame Pizza.jpg", badge: "New", description: "Beef pepperoni with chili flakes.", tags: ["Beef", "New"] },
-      { id: "pz5", name: "Creamy Tikka Pizza", price: 550, image: "/images/Creamy Tikka Pizza.jpg", description: "Creamy malai chicken botti with white-sauce base.", tags: ["Creamy", "Mild"] },
+      { id: "pz1", name: "BBQ Fajita Pizza", price: 950, image: "/images/BBQ Fajita Pizza.webp", badge: "Hot", description: "Smoky BBQ chicken with bell peppers and onions.", tags: ["Spicy", "Chicken"] },
+      { id: "pz2", name: "Creamy Tikka Pizza", price: 1050, image: "/images/Creamy Tikka Pizza.jpg", description: "Rich malai tikka with a creamy white sauce base.", tags: ["Creamy", "Mild"] },
+      { id: "pz3", name: "Pepperoni Flame", price: 1100, image: "/images/Pepperoni Flame Pizza.jpg", description: "Spicy beef pepperoni with extra mozzarella.", tags: ["Beef", "Spicy"] },
+      { id: "pz4", name: "Loaded Special", price: 1250, image: "/images/loaded-special-pizza.jpg", badge: "Chef Choice", description: "Our signature pizza with everything on it.", tags: ["Signature"] },
     ],
   },
   {
     id: "burgers",
     title: "Burgers",
-    subtitle: "Flame-grilled",
+    subtitle: "Flame Grilled",
     items: [
-      { id: "bg1", name: "Spicy Zinger", price: 280, image: "/images/spicy-foods-burger-card.jpg", badge: "Popular", description: "Crispy fried chicken fillet.", tags: ["Chicken", "Spicy"] },
-      { id: "bg2", name: "Mighty Zinger", price: 380, image: "/images/spicy-foods-burger-hero.jpg", description: "Double zinger fillets, melted cheese.", tags: ["Double", "Spicy"] },
-      { id: "bg3", name: "Chicken Chilli", price: 250, image: "/images/spicy-foods-sides.jpg", description: "Tender chicken patty, chilli sauce.", tags: ["Chicken", "Spicy"] },
-      { id: "bg4", name: "Beef Inferno", price: 400, image: "/images/Crispy Broast Quarter.jpg", description: "Flame-grilled beef, jalapeños.", tags: ["Beef", "Spicy"] },
-      { id: "bg5", name: "Mega Crunch", price: 450, image: "/images/Crispy Tortilla Wrap.jpg", description: "Triple-decker burger, extreme crunch.", tags: ["Crunchy", "Mega"] },
+      { id: "bg1", name: "Spicy Zinger", price: 350, image: "/images/spicy-foods-burger-card.jpg", badge: "Best Seller", description: "Crispy fried chicken breast with secret spicy mayo.", tags: ["Chicken", "Spicy"] },
+      { id: "bg2", name: "Mighty Beef", price: 550, image: "/images/spicy-foods-burger-hero.jpg", description: "Double flame-grilled beef patties with melted cheese.", tags: ["Beef", "Double"] },
     ],
   },
   {
     id: "rolls",
-    title: "Rolls & Wraps",
-    subtitle: "Hand-rolled",
+    title: "Rolls",
+    subtitle: "Paratha Wraps",
     items: [
-      { id: "rl1", name: "Chicken Cheese Roll", price: 70, image: "/images/Cheese-Paratha-Roll.jpg", description: "Soft paratha, chicken, stretchy cheese.", tags: ["Chicken", "Cheese"] },
-      { id: "rl2", name: "Chicken Chatni Roll", price: 150, image: "/images/Chicken Chatni Roll.webp", description: "Charcoal-grilled boti, chutney.", tags: ["Grilled", "Chicken"] },
-      { id: "rl3", name: "Mayo Garlic Roll", price: 180, image: "/images/Mayo Garlic Roll.jpg", description: "Signature garlic mayo roll.", tags: ["Creamy", "Popular"] },
+      { id: "rl1", name: "Cheese Paratha Roll", price: 280, image: "/images/Cheese-Paratha-Roll.webp", badge: "Popular", description: "Golden paratha wrapped with juicy chicken and cheese.", tags: ["Cheese", "Chicken"] },
+      { id: "rl2", name: "Chicken Chatni Roll", price: 220, image: "/images/Chicken Chatni Roll.webp", description: "Classic charcoal chicken with spicy green chutney.", tags: ["Spicy", "Classic"] },
+      { id: "rl3", name: "Mayo Garlic Roll", price: 250, image: "/images/Mayo Garlic Roll.jpg", description: "Tender chicken with our signature mayo garlic sauce.", tags: ["Creamy"] },
     ],
   },
   {
     id: "crispy",
-    title: "Crispy",
-    subtitle: "Golden & crunchy",
+    title: "Crispy & Sides",
+    subtitle: "Crunchy Bites",
     items: [
-      { id: "cr1", name: "Chicken Nuggets", price: 200, image: "/images/Nuggets 9 pcs.jpg", description: "Golden, crispy nuggets.", tags: ["Crispy", "Snack"] },
-      { id: "cr2", name: "Chicken Strips", price: 300, image: "/images/fire-chicken-strips.png", description: "Hand-breaded strips.", tags: ["Crispy", "Chicken"] },
-      { id: "cr3", name: "Crispy Wings", price: 350, image: "/images/special-wings-6.jpg", badge: "Hot", description: "Spicy wings, crunchy coating.", tags: ["Spicy", "Wings"] },
+      { id: "cr1", name: "Masala Fries", price: 180, image: "/images/masala-fries.jpeg", badge: "Must Try", description: "Crispy golden fries tossed in spicy desi masala.", tags: ["Spicy", "Sides"] },
+      { id: "cr2", name: "Fire Strips", price: 450, image: "/images/fire-chicken-strips.png", description: "Extra crunchy chicken strips with a fiery kick.", tags: ["Crispy", "Spicy"] },
+      { id: "cr3", name: "Chicken Nuggets", price: 320, image: "/images/Nuggets 9 pcs.jpg", description: "9 pieces of golden breaded chicken nuggets.", tags: ["Kids", "Crispy"] },
+      { id: "cr4", name: "Special Wings", price: 480, image: "/images/special-wings-6.jpg", description: "6 pieces of juicy wings with a crunchy coating.", tags: ["Wings", "Spicy"] },
+      { id: "cr5", name: "Pizza Fries", price: 550, image: "/images/Popular-loaded-pizza-fries.png", description: "Loaded fries topped with pizza sauce, cheese, and olives.", tags: ["Loaded", "Cheesy"] },
     ],
   },
 ];
@@ -78,21 +76,20 @@ export type Deal = {
 };
 
 export const deals: Deal[] = [
-  { id: "d1", name: "Family Feast", price: 1300, image: "/images/family-feast.webp", items: ["1 Large Pizza", "2 Zinger Burgers"], description: "Meal for the whole family.", tags: ["Family"] },
-  { id: "d2", name: "Burger Duo", price: 550, image: "/images/spicy-foods-burger-card.jpg", items: ["2 Zinger Burgers", "1 Large Fries"], description: "Double the burger, double the fun.", tags: ["Burger"] },
-  { id: "d3", name: "Pizza Combo", price: 950, image: "/images/spicy-foods-pizza.jpg", items: ["1 Medium Pizza", "4 Wings", "1 Drink"], description: "Pizza and wings experience.", tags: ["Pizza"] },
-  { id: "d4", name: "Midnight Snack", price: 400, image: "/images/fire-chicken-strips.png", items: ["6 Wings", "2 Rolls"], description: "Late night hunger buster.", tags: ["Crispy"] },
+  { id: "d1", name: "Family Feast", price: 2500, image: "/images/family-feast.webp", items: ["1 Large Pizza", "2 Zinger Burgers", "1.5L Drink"], description: "The ultimate meal for the whole family.", tags: ["Family"] },
+  { id: "d2", name: "Duo Deal", price: 850, image: "/images/spicy-foods-burger-card.jpg", items: ["2 Zinger Burgers", "1 Regular Fries"], description: "Perfect meal for two.", tags: ["Deal"] },
 ];
 
 export const HERO_SLIDES = [
-  { eyebrow: "Signature Pizza", title: "BBQ", titleAccent: "Fajita", subtitle: "Smoky, spicy baked", image: "/images/BBQ Fajita Pizza.jpg" },
-  { eyebrow: "Popular Roll", title: "Chicken", titleAccent: "Chatni Roll", subtitle: "Fresh roll with chutney", image: "/images/Chicken Chatni Roll.webp" },
-  { eyebrow: "Classic", title: "Cheese", titleAccent: "Paratha Roll", subtitle: "Flaky paratha with juicy fillings", image: "/images/Cheese-Paratha-Roll.jpg" },
+  { eyebrow: "OPEN NOW — 3PM TO 3AM", title: "Signature", titleAccent: "Pizza", subtitle: "BBQ Fajita · Tikka · Spicy Inferno", image: "/images/BBQ Fajita Pizza.webp" },
+  { eyebrow: "OPEN NOW — 3PM TO 3AM", title: "Classic", titleAccent: "Rolls", subtitle: "Cheese Paratha · Mayo Garlic · Chatni Roll", image: "/images/Cheese-Paratha-Roll.webp" },
+  { eyebrow: "OPEN NOW — 3PM TO 3AM", title: "Spicy", titleAccent: "Sides", subtitle: "Masala Fries · Loaded Pizza Fries · Nuggets", image: "/images/masala-fries.jpeg" },
 ];
 
 export const BRAND = {
   name: "Spicy Foods",
   tagline: "Spicy Foods Cafe",
+  location: "Karachi, Pakistan",
   hours: "3 PM — 3 AM",
   phone: "+92 315 8454839",
   whatsapp: "923158454839",

@@ -1,70 +1,129 @@
-import { useEffect, useState } from "react";
-import { HERO_SLIDES, BRAND, img } from "@/data/menu";
-import { Instagram, Facebook } from "lucide-react";
-
-// TikTok icon as SVG component
-function TiktokIcon({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none">
-      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.5a8.16 8.16 0 0 0 4.77 1.52V6.69a4.78 4.78 0 0 1-1.84 0Z" />
-    </svg>
-  );
-}
+import * as React from "react";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { HERO_SLIDES, BRAND } from "@/data/menu";
+import { img } from "@/data/menu";
+import { Instagram, Facebook, MapPin, Clock } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export function Hero() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setI((x) => (x + 1) % HERO_SLIDES.length), 5000);
-    return () => clearInterval(t);
-  }, []);
-  const s = HERO_SLIDES[i];
+  const [current, setCurrent] = React.useState(0);
+  const [api, setApi] = React.useState<any>();
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false })
+  );
+
+  React.useEffect(() => {
+    if (!api) return;
+    
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
-    <section className="relative h-[320px] w-full overflow-hidden bg-black border-l-4 border-amber-500">
-      {/* Background Image */}
-      {HERO_SLIDES.map((slide, idx) => (
-        <div
-          key={idx}
-          className="absolute inset-0 transition-opacity duration-1000 p-2 border-l-4 border-amber-500"
-          style={{ opacity: i === idx ? 1 : 0 }}
-        >
-          <img src={img(slide.image, 800)} alt="" className="h-full w-full object-contain" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+    <section className="relative h-[60vh] w-full overflow-hidden bg-black">
+      {/* Top Header Overlay */}
+      <div className="absolute top-4 left-0 right-0 z-20 flex items-center justify-between px-6">
+        <div className="flex items-center gap-3 rounded-xl bg-black/60 px-4 py-2 backdrop-blur-md border border-white/10">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/20">
+             <div className="h-6 w-6 rounded-full border-2 border-amber-500 border-t-transparent animate-spin-slow" />
+          </div>
+          <span className="font-display text-lg font-bold tracking-tight text-white uppercase">
+            {BRAND.name}
+          </span>
         </div>
-      ))}
-
-      {/* Top Header */}
-      <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between p-3">
-        <div className="flex items-center gap-2 rounded-xl border border-white/10 bg-black/40 px-2 py-1 backdrop-blur-md">
-          <span className="text-sm">🌶️</span>
-          <span className="font-display font-bold text-amber-500 text-[10px] tracking-widest uppercase">SPICY FOODS</span>
-        </div>
-        <div className="flex gap-2 text-white">
-          <a href={BRAND.instagram} className="rounded-full bg-black/40 p-1.5"><Instagram size={14} /></a>
-          <a href={BRAND.facebook} className="rounded-full bg-black/40 p-1.5"><Facebook size={14} /></a>
-          <a href={BRAND.tiktok} className="rounded-full bg-black/40 p-1.5"><TiktokIcon size={14} /></a>
-        </div>
-      </div>
-
-      {/* Main Content */}
-      <div className="absolute inset-x-0 bottom-14 z-20 px-4 text-center">
-        <h1 className="font-display text-3xl font-bold text-white leading-tight">
-          {s.title} <span className="italic text-amber-500">{s.titleAccent}</span>
-        </h1>
-        <p className="text-gray-300 text-[10px] mt-0.5">{s.subtitle}</p>
         
-        {/* Indicators */}
-        <div className="mt-2 flex justify-center gap-1.5">
-          {HERO_SLIDES.map((_, idx) => (
-            <div key={idx} className={`h-1 rounded-full ${i === idx ? 'w-6 bg-amber-500' : 'w-2 bg-gray-600'}`} />
-          ))}
+        <div className="flex gap-2">
+          <a href={BRAND.instagram} target="_blank" className="flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md border border-white/10 hover:bg-amber-500 hover:text-black transition-all">
+            <Instagram size={16} />
+          </a>
+          <a href={BRAND.facebook} target="_blank" className="flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md border border-white/10 hover:bg-amber-500 hover:text-black transition-all">
+            <Facebook size={16} />
+          </a>
+          <a href={BRAND.tiktok} target="_blank" className="flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md border border-white/10 hover:bg-amber-500 hover:text-black transition-all font-bold text-[10px]">
+            Tik
+          </a>
         </div>
       </div>
 
-      {/* Info Strip */}
-      <div className="absolute inset-x-0 bottom-0 z-20 grid grid-cols-2 divide-x divide-white/10 border-t border-white/10 bg-black/90 text-[10px] text-gray-300">
-        <div className="flex items-center justify-center gap-1 py-2">📍 Husainabad, Karachi</div>
-        <div className="flex items-center justify-center gap-1 py-2">🕒 3 PM — 3 AM</div>
+      <Carousel
+        setApi={setApi}
+        plugins={[plugin.current]}
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        className="h-full w-full"
+      >
+        <CarouselContent className="h-full w-full -ml-0">
+          {HERO_SLIDES.map((slide, index) => (
+            <CarouselItem key={index} className="relative h-full w-full pl-0">
+              <div className="relative h-[60vh] w-full bg-black">
+                {/* Image background - Using object-contain to ensure the full image is visible as requested */}
+                <img
+                  src={img(slide.image, 1200)}
+                  alt={slide.title}
+                  className="absolute inset-0 h-full w-full object-contain"
+                />
+                
+                {/* Overlay - Adjusted to be more subtle with object-contain */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/30" />
+                
+                {/* Content */}
+                <div className="absolute inset-0 flex flex-col justify-end pb-20 px-6">
+                  {/* Open Now Badge */}
+                  <div className="mb-4 flex items-center gap-2 w-fit rounded-full bg-black/60 px-4 py-1.5 backdrop-blur-md border border-white/10">
+                    <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-[10px] font-bold tracking-[0.1em] text-white uppercase">
+                      {slide.eyebrow}
+                    </span>
+                  </div>
+
+                  <h1 className="font-sans text-3xl font-black text-white md:text-6xl">
+                    {slide.title} <span className="font-display italic text-amber-500">{slide.titleAccent}</span>
+                  </h1>
+                  
+                  <p className="mt-1 max-w-md text-xs text-white/70 font-medium">
+                    {slide.subtitle}
+                  </p>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+
+      {/* Carousel Dots */}
+      <div className="absolute bottom-16 right-6 z-20 flex gap-1.5">
+        {HERO_SLIDES.map((_, i) => (
+          <div 
+            key={i} 
+            className={`h-1.5 rounded-full transition-all duration-300 ${current === i ? 'w-6 bg-amber-500' : 'w-1.5 bg-white/40'}`}
+          />
+        ))}
+      </div>
+
+      {/* Info Bar at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 grid grid-cols-2 border-t border-white/10 bg-black/90 backdrop-blur-xl">
+        <div className="flex items-center gap-3 border-r border-white/10 py-3 px-6">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
+            <MapPin size={16} />
+          </div>
+          <div>
+            <p className="text-[8px] font-bold uppercase tracking-wider text-white/40 leading-none mb-1">Location</p>
+            <p className="text-[10px] font-bold text-white leading-tight">{BRAND.location}</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 py-3 px-6">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
+            <Clock size={16} />
+          </div>
+          <div>
+            <p className="text-[8px] font-bold uppercase tracking-wider text-white/40 leading-none mb-1">Hours</p>
+            <p className="text-[10px] font-bold text-white leading-tight">{BRAND.hours}</p>
+          </div>
+        </div>
       </div>
     </section>
   );
