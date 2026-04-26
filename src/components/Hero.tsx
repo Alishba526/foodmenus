@@ -106,7 +106,7 @@ export function Hero() {
       </div>
 
       {/* Info strip */}
-      <div className="absolute inset-x-0 -bottom-px z-10 hidden translate-y-1/2 px-6 md:block md:px-10">
+      <div className="absolute inset-x-0 bottom-10 z-10 hidden px-6 md:block md:px-10">
         <div className="mx-auto grid max-w-6xl grid-cols-4 gap-px overflow-hidden rounded-2xl border border-border bg-border shadow-card">
           <InfoCell icon="📍" label={BRAND.location} />
           <InfoCell icon="🕒" label={BRAND.hours} />
