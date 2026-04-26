@@ -107,8 +107,7 @@ export function Hero() {
 
       {/* Info strip */}
       <div className="absolute inset-x-0 bottom-10 z-10 hidden px-6 md:block md:px-10">
-        <div className="mx-auto grid max-w-6xl grid-cols-4 gap-px overflow-hidden rounded-2xl border border-border bg-border shadow-card">
-          <InfoCell icon="📍" label={BRAND.location} />
+        <div className="mx-auto grid max-w-4xl grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border shadow-card">
           <InfoCell icon="🕒" label={BRAND.hours} />
           <InfoCell icon="📞" label={BRAND.phone} href={`tel:${BRAND.phone.replace(/\s/g, "")}`} />
           <InfoCell

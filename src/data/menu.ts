@@ -135,7 +135,6 @@ export const HERO_SLIDES = [
 export const BRAND = {
   name: "Spicy Foods",
   tagline: "Spicy Foods Cafe",
-  location: "Liaquatabad B1, Karachi",
   hours: "3 PM — 3 AM",
   phone: "+92 315 8454839",
   whatsapp: "923158454839",
